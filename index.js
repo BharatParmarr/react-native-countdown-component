@@ -51,12 +51,12 @@ class CountDown extends React.Component {
   }
 
   componentDidMount() {
-    AppState.addEventListener('change', this._handleAppStateChange);
+    this.appState =  AppState.addEventListener('change', this._handleAppStateChange);
   }
 
   componentWillUnmount() {
     clearInterval(this.timer);
-    AppState.remove('change', this._handleAppStateChange);
+    this.appState.remove()
   }
 
   componentDidUpdate(prevProps, prevState) {
